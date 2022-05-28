@@ -19,7 +19,9 @@ const getData = async () => {
     const response = await Api.get("testing/apiprobk/all");
     // console.log(response);
     data.value = response.data;
-    countData.value = data.value.filter((item) => item.sertifikat == "belum").length;
+    countData.value = data.value.filter(
+      (item) => item.sertifikat == "belum"
+    ).length;
     console.log(countData.value);
     return response;
   } catch (error) {
@@ -61,7 +63,11 @@ const doStoreDataBackupDeteksi = async (d, index) => {
   }
 };
 
-const getDataFromApiUjianSertifikat = async (username, apiprobk_id = 0, index = 0) => {
+const getDataFromApiUjianSertifikat = async (
+  username,
+  apiprobk_id = 0,
+  index = 0
+) => {
   try {
     const response = await axios.post(
       "http://161.97.84.91:9001/api/probk/DataSertifikat_Get",
@@ -87,7 +93,11 @@ const getDataFromApiUjianSertifikat = async (username, apiprobk_id = 0, index = 
   }
 };
 
-const getDataFromApiUjianDeteksi = async (username, apiprobk_id = 0, index = 0) => {
+const getDataFromApiUjianDeteksi = async (
+  username,
+  apiprobk_id = 0,
+  index = 0
+) => {
   try {
     const response = await axios.post(
       "http://161.97.84.91:9001/api/probk/DataDeteksi_Get",
@@ -210,7 +220,11 @@ const doSyncData = async () => {
   // 2.async insert data from api to be
   for (let i = 0; i < data.value.length; i++) {
     if (data.value[i].sertifikat == "belum") {
-      getDataFromApiUjianSertifikat(data.value[i].username, data.value[i].id, i);
+      getDataFromApiUjianSertifikat(
+        data.value[i].username,
+        data.value[i].id,
+        i
+      );
     }
     if (data.value[i].sertifikat == "belum") {
       getDataFromApiUjianDeteksi(data.value[i].username, data.value[i].id, i);
@@ -275,6 +289,9 @@ const doGetDataFromApiUjian = async () => {
     <h1>Jumlah Data :{{ countData }}</h1>
   </div>
 
+  <router-link :to="{ name: 'Pdf1' }">
+    <ButtonTwo title="CETAK"></ButtonTwo
+  ></router-link>
   <div class="pt-6 px-4 lg:flex flex-wrap gap-4">
     <div class="w-full lg:w-12/12">
       <div v-if="data">
@@ -296,7 +313,10 @@ const doGetDataFromApiUjian = async () => {
               <div class="text-sm font-medium text-center flex justify-center">
                 <ButtonEdit @click="doEditData(props.row.id)" />
                 <ButtonDelete @click="doDeleteData(props.row.id)" />
-                <Popper content="Reset Password" @click="doResetPassword(props.row.id)">
+                <Popper
+                  content="Reset Password"
+                  @click="doResetPassword(props.row.id)"
+                >
                   <template #content>
                     <button
                       class="text-orange-100 block rounded-sm font-bold py-1 px-1 mr-2 flex items-center hover:text-orange-300 bg-orange-400 rounded-lg"
@@ -335,8 +355,12 @@ const doGetDataFromApiUjian = async () => {
   </div>
   <div class="container max-w-8xl mx-auto">
     <!-- Start Second Row -->
-    <div class="grid grid-cols-1 md:grid-cols-2 px-4 xl:p-0 gap-4 xl:gap-6 5 my-14">
-      <div class="bg-transparent p-6 rounded-xl border border-transparent pl-20 pt-10">
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 px-4 xl:p-0 gap-4 xl:gap-6 5 my-14"
+    >
+      <div
+        class="bg-transparent p-6 rounded-xl border border-transparent pl-20 pt-10"
+      >
         <h1
           data-aos="zoom-in"
           data-aos-duration="2000"
@@ -349,8 +373,9 @@ const doGetDataFromApiUjian = async () => {
           data-aos-duration="2000"
           class="text-gray-600 font-light mt-8 text-md"
         >
-          Simpler App remembers your important details, so you can fill carts, not forms.
-          And everything is encrypted so you can speed safely through checkout.
+          Simpler App remembers your important details, so you can fill carts,
+          not forms. And everything is encrypted so you can speed safely through
+          checkout.
         </p>
 
         <p
@@ -358,9 +383,9 @@ const doGetDataFromApiUjian = async () => {
           data-aos-duration="2000"
           class="text-gray-600 font-light mt-8 text-md"
         >
-          Now, you can offset the carbon emissions produced by your deliveries—for free.
-          All you have to do is check out with Shop Pay, one of the first carbon-neutral
-          way to pay.
+          Now, you can offset the carbon emissions produced by your
+          deliveries—for free. All you have to do is check out with Shop Pay,
+          one of the first carbon-neutral way to pay.
         </p>
         <p
           data-aos="zoom-in"

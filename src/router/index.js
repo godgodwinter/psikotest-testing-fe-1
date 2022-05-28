@@ -10,6 +10,8 @@ import LandingSiswaLogin from '../views/landing/LandingSiswaLogin.vue';
 import LandingPengawasLapangan from '../views/landing/LandingPengawasLapangan.vue';
 import LandingPengawasSekolah from '../views/landing/LandingPengawasSekolah.vue';
 
+import Pdf1 from '../views/landing/Pdf1.vue';
+
 //admin
 import SiswaDashboard from '../views/admin/Dashboard.vue'
 
@@ -64,6 +66,11 @@ const routes = [
         component: SiswaDashboard,
       },
     ],
+  },
+  {
+    path: '/pdf1',
+    name: 'Pdf1',
+    component: Pdf1,
   },
   {
     path: '/:catchAll(.*)', redirect: '/404',
